@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Ravi
+ * @package    Ravi_Trackingorder
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Ravi_Trackingorder>
+            <version>0.1.0</version>
+        </Ravi_Trackingorder>
+    </modules>
+    <frontend>
+        <routers>
+            <trackingorder>
+                <use>standard</use>
+                <args>
+                    <module>Ravi_Trackingorder</module>
+                    <frontName>trackingorder</frontName>
+                </args>
+            </trackingorder>
+        </routers>
+        <layout>
+            <updates>
+                <trackingorder>
+                    <file>trackingorder.xml</file>
+                </trackingorder>
+            </updates>
+        </layout>
+    </frontend>
+    <!--<admin>
+        <routers>
+			<trackingorder>
+				<use>admin</use>
+				<args>
+					<module>Ravi_Trackingorder</module>
+					<frontName>trackingorder</frontName>
+				</args>
+			</trackingorder>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<trackingorder module="trackingorder">
+				<title>Trackingorder</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="trackingorder">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>trackingorder/adminhtml_trackingorder</action>
+					</items>
+				</children>
+			</trackingorder>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Ravi_Trackingorder>
+							<title>Trackingorder Module</title>
+							<sort_order>10</sort_order>
+						</Ravi_Trackingorder>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<trackingorder>
+					<file>trackingorder.xml</file>
+				</trackingorder>
+			</updates>
+		</layout>
+    </adminhtml>--> 
+    <global>
+        <models>
+            <trackingorder>
+                <class>Ravi_Trackingorder_Model</class>
+                <resourceModel>trackingorder_mysql4</resourceModel>
+            </trackingorder>
+            <trackingorder_mysql4>
+                <class>Ravi_Trackingorder_Model_Mysql4</class>
+                <entities>
+                    <trackingorder>
+                        <table>trackingorder</table>
+                    </trackingorder>
+                </entities>
+            </trackingorder_mysql4>
+        </models>
+        <!--<resources>
+            <trackingorder_setup>
+                <setup>
+                    <module>Ravi_Trackingorder</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </trackingorder_setup>
+            <trackingorder_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </trackingorder_write>
+            <trackingorder_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </trackingorder_read>
+        </resources>-->
+        <blocks>
+            <trackingorder>
+                <class>Ravi_Trackingorder_Block</class>
+            </trackingorder>
+        </blocks>
+        <helpers>
+            <trackingorder>
+                <class>Ravi_Trackingorder_Helper</class>
+            </trackingorder>
+        </helpers>
+    </global>
+</config>

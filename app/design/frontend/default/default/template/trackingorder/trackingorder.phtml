@@ -1,0 +1,80 @@
+<style type="text/css">
+#trackorderFrom .form-list label.required {font-family: "Yanone Kaffeesatz",sans-serif; font-size: 15px; padding-bottom: 5px;}
+.text-tailor-page{font-family: "Yanone Kaffeesatz",sans-serif; font-size: 15px;}
+ul.form-list.trackorder li div > .validation-advice{font-family: "Yanone Kaffeesatz",sans-serif; font-size: 13px;}
+#orderid{padding:8px;}
+#formLoader{float: right;display: block;width: 100%;font-size:14px;color:#db5e00;font-family: "Yanone Kaffeesatz",sans-serif;font-weight:bold;}
+.header-infomation{width: 100%;text-align: center;background:#db5e00;float:left;padding-top:8px; margin:0;display:block;color: #fff;font-size: 13px;font-weight:bold;}
+h4.trackorder-deatils{width: 100%;text-align: center;font-size: 13px;padding-top: 10px;float: left;background: #DCDCDC;color: #333;padding-bottom: 10px;}
+.col-md-6 {width: 49%; float:left;}
+.col-md-62 {width: 49%; float:right;}
+h4.trackorder-deatils-title{text-align: center;font-size: 15px;padding-top: 10px;background: #DCDCDC;color: #333;padding-bottom: 10px;}
+.table{width:100%;}
+.table>tbody>tr>td {vertical-align: middle;}
+th {text-align: left; font-weight:bold;}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{padding: 8px;line-height: 1.52857143;vertical-align: top;border-top: 1px solid #eeeeee; font-size:13px;}
+.mailer-block.text-center.bg-white.block-center{float: left;margin-top: 30px;width: 100%;}
+</style>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+<div class="page-title">
+  <h1><?php echo $this->__('Track Your Order') ?></h1>
+</div>
+<div id="formSuccess"></div>
+<form action="#" id="trackorderFrom" method="post" class="scaffold-form" enctype="multipart/form-data">
+<div class="fieldset">
+    <div class="text-tailor-page">Track your order here<p class="required"><?php echo $this->__('* Required Fields') ?></p>
+    </div>
+<ul class="form-list trackorder">
+      <li class="fields">
+        <div class="field">
+          <label for="orderid" class="required"><em>*</em><?php echo $this->__('Order Number') ?></label>
+          <div class="input-box">
+            <input name="orderid" id="orderid" title="<?php echo $this->__('Order Number'); ?>" value="" placeholder="Please enter your order number" class="input-text required-entry" type="text" />
+          </div>
+        </div>
+      </li>
+	  <li>
+        <div class="buttons-set tailorSubmit">
+          <button type="submit" title="<?php echo $this->__('Track Order'); ?>" class="button"><span><span><?php echo $this->__('Track Order'); ?></span></span></button>
+		  <div id="formLoader" style="display:none;"><img src="<?php echo $this->getSkinUrl('images/amscroll-scroll.gif');?>" />Please wait.......</div>
+        </div>
+      </li>
+</ul>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('trackorderFrom', true);
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+    var formId = 'trackorderFrom';
+    var myForm = new VarienForm(formId, true);
+    var postUrl = '<?php echo $this->getFormAction(); ?>';
+    function doAjax() {
+        if (myForm.validator.validate()) {
+            new Ajax.Updater(
+                { success:'formSuccess' }, postUrl, {
+                        method:'post',
+                        asynchronous:true,
+                        evalScripts:false,
+                        onComplete:function(request, json) {
+                        Element.hide(formId);
+                        Element.show('formSuccess');
+						Element.hide('formLoader');
+                    },
+                    onLoading:function(request, json){
+                        Element.show('formLoader');
+                    },
+                    parameters: $(formId).serialize(true),
+                }
+            );
+        }
+    }
+    
+    new Event.observe(formId, 'submit', function(e){
+        e.stop();
+        doAjax();
+    });
+//]]>
+</script>

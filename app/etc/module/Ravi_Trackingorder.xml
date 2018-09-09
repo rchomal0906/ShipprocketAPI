@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Ravi
+ * @package    Ravi_Trackingorder
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Ravi_Trackingorder>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Ravi_Trackingorder>
+    </modules>
+</config> 
